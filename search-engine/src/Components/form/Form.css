@@ -1,0 +1,94 @@
+.form {
+    background-color: inherit;
+}
+
+.search-icon {
+    position: relative;
+    font-size: 40px;
+
+    left: 60px;
+    top: 10px;
+}
+
+.search-field button {
+    width: 20%;
+    height: 60px;
+    background-color: #47b0e0;
+    color: #fff;
+    border-color: white;
+    border-radius: 0 10px 10px 0;
+
+    font-weight: 600;
+    font-size: 20px;
+
+}
+
+.search-field input {
+    width: 70%;
+    height: 60px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+
+    font-weight: 200;
+    font-size: 20px;
+
+    text-indent: 70px;
+
+}
+
+.search-field input::after {
+    border: none;
+}
+
+.grey {
+    margin-right: 5%;
+}
+
+.grey .form-control{
+    background-color: #F8F6F7;
+    color: #868998;
+}
+
+.grey .btn {
+    color: white;
+    border-color: #F8F6F7;
+}
+
+.form-main-page {
+    width: 70%;
+    margin-left: 15%;
+}
+
+
+@media (max-width: 1000px) {
+    .search-icon {
+        font-size: 24px;
+        left: 35px;
+        top: 5px;
+    }
+
+    .search-field input {
+        font-size: 18px;
+        height: 40px;
+        text-indent: 40px;
+    }
+
+    .search-field button {
+        font-size: 16px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 750px) {
+    .form-main-page .search-field button {
+        height: 50px;    
+    }
+    
+    .form-main-page .search-field input {
+        height: 50px;
+    }
+
+    .grey {
+        margin-left: 10px;
+    }
+}

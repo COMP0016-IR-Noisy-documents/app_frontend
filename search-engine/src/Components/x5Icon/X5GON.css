@@ -1,0 +1,17 @@
+@import url(//db.onlinewebfonts.com/c/5c6682d0f00a759d2d735c090a6900fe?family=Posterama);
+
+.X5GON {
+    color: #afadad;
+    font-family: Posterama;
+}
+
+.x-blue {
+    color: #47b0e0;
+}
+
+
+/* non-commercial license */
+@font-face {
+    font-family: 'Posterama';
+    src: local('Posterama'), url(../../fonts/Posterama2001W04Light.ttf) format('truetype');
+  }

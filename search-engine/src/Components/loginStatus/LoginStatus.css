@@ -1,0 +1,92 @@
+.LoginStatus {
+    font-size: 22px;
+    color: #A8A5A5 !important;
+
+    margin-right: 24px;
+}
+
+.login-true {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    position: relative;
+    top: 12px;
+}
+
+.login-true-user {
+    display: flex;
+    flex-direction: row;
+
+    border-right: 4px solid #A8A5A5;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.login-disconnect {
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+}
+
+.person-icon {
+    margin-top: 5px;
+    margin-right: 20px;
+    font-size: 40px;
+}
+
+.login-false {
+    padding-right: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    position: relative;
+    top: 20px;
+
+}
+
+.login-false .login {
+    border-right: 4px solid #A8A5A5;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.login-false a {
+    color: #A8A5A5;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* 
+#sign-up {
+
+} */
+
+@media (max-width: 1200px) {
+    .LoginStatus {
+        font-size: 18px;
+    }
+    
+    .person-icon {
+        font-size: 30px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 750px) {
+    #welcome-user {
+        display: none;
+    }
+
+    .login-true-user {
+        border-right: none;
+        margin-right: 0px;
+        padding-right: 0px;
+    }
+
+    .login-false {
+        top: 23px;
+    }
+}
+

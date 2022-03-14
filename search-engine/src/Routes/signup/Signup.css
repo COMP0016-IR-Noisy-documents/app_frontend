@@ -1,0 +1,45 @@
+#signup {
+    width: 460px;
+    margin: 60px auto;
+    background-color: white;
+    border: none;
+    box-shadow: 10px 3px 55px #00000029;
+    border-radius: 30px;
+
+    color: #868686;
+}
+
+#signup h1 {
+    font-size: 40px;
+    font-weight: 900;
+
+    position: relative;
+
+    padding-left: 170px;
+    padding-top: 30px;
+}
+
+.term-and-agreement {
+    margin-left: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.term-and-agreement p {
+    position: relative;
+    left: 5px;
+    bottom: 5px;
+}
+
+@media (max-width: 750px) {
+    #signup {
+        width: 350px;
+        margin: 30px auto 30px;
+    }
+
+    #signup h1 {
+        padding-left: 100px;
+    }
+}

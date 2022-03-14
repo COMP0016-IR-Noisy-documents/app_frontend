@@ -1,0 +1,55 @@
+.notFirst {
+    border-top: 2px solid #F8F6F7;
+}
+
+.filterElement {
+    padding: 12px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.filterName {
+    font-size: 20px;
+    font-weight: bold;
+    color: #868686;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filterName .add{
+    font-size: 24px;
+}
+
+.filterName .v{
+    font-size: 18px;
+}
+
+.filterList {
+    text-align: left;
+    font-size: 16px;
+    padding: 12px 12px;
+
+    color: #A8A5A5;
+}
+
+.isChosen {
+    color: #47B0E0;
+}
+
+@media (max-width: 1000px) {
+    .filterElement {
+        width: 145px;
+    }
+
+    .filterName {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 750px) {
+    .filterElement {
+        width: 100%;
+    }
+}

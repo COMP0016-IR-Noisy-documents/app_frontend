@@ -1,0 +1,120 @@
+#header {
+  height: 170px;
+  width: 100vw;
+  padding: 40px 0 40px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#X5Header {
+  font-size: 56px;
+  padding-left: 50px;
+}
+
+#X5Header a {
+  text-decoration: none;
+}
+
+#header-content {
+  flex-grow: 2;
+}
+
+#form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#form {
+  color: #868686;
+
+  width: 100%;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.search-query {
+  padding-top: 30;
+  padding-bottom: 10;
+
+  width: 90%;
+
+  color: #868686;
+  font-size: 20px;
+  font-weight: bold;
+
+  margin-left: 5%;
+}
+
+.search-query p {
+  text-align: left;
+  margin-left: 30px;
+}
+
+/* #LoginStatus {
+    flex: 1 1 0;
+} */
+
+@media (max-width: 1000px) {
+  .search-query p {
+    font-size: 18px;
+  }
+
+  #X5Header {
+    margin-top: 10px;
+    font-size: 40px;
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 750px) {
+  #header {
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "X5Header LoginStatus"
+      "form form";
+  }
+
+  #X5Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    grid-area: X5Header;
+
+    margin-bottom: 20px;
+    padding-left: 21%;
+
+    margin-top: 18px;
+    font-size: 30px;
+  }
+
+  #header-content {
+    grid-area: form;
+  }
+
+  .search-query p {
+    font-size: 14px;
+  }
+
+  #form-content {
+    width: 100%;
+    bottom: 0px;
+  }
+
+  #form {
+    margin-bottom: 10px;
+  }
+
+  #LoginStatus {
+    grid-area: LoginStatus;
+  }
+}

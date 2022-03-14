@@ -1,0 +1,48 @@
+.search {
+  text-align: center;
+}
+
+#X5 {
+  padding-bottom: 48px;
+  margin: 40px 0 0;
+  font-size: 80px;
+}
+
+/* style a filter to be on the LHS of the resultList */
+.result {
+  display: flex;
+  flex-direction: row 
+}
+
+/* border for search result */
+.searchBorder {
+  border: 2px solid white;
+  border-radius: 23px;
+}
+
+@media (max-width: 1000px) {
+  #X5 {
+  padding-bottom: 48px;
+  margin: 40px 0 0;
+  font-size: 60px;
+  }
+}
+
+@media (max-width: 750px) {
+  .result {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  /* .form {
+    width: 80%;
+    margin-left: 10%;
+  } */
+}
+
+/* @media (max-width: 750px) {
+  .form {
+    width: 90%;
+    margin-left: 5%;
+  }
+} */

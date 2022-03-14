@@ -1,0 +1,57 @@
+.alert-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.alert {
+    width: 30%;
+    background-color: white;
+    border: none;
+    box-shadow: 10px 3px 55px #00000029;
+    border-radius: 30px;
+
+    position: relative;
+    margin: 40vh auto;
+
+
+    color: #868686;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 20px 20px 5px;
+
+}
+
+.alert-content {
+    font-size: 20px;
+    margin: 15px 20px;
+}
+
+.alert .button {
+    font-size: 22px;
+    width: 50%;
+    
+    margin: 10px auto 15px;
+}
+
+@media (max-width: 1000px) {
+    .alert {
+        width: 50%;
+    }    
+}
+
+@media (max-width: 700px) {
+    .alert {
+        width: 60%;
+    }    
+}
+

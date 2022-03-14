@@ -1,0 +1,32 @@
+.login-param {
+    color: #868686;
+    margin: 30px 60px;
+}
+
+.login-param h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.login-param input {
+    font-size: 15px;
+    text-indent: 25px;
+    width: 90%;
+
+    margin-top: 20px;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: solid 2px #868686;
+
+    z-index: 0;
+    position: relative;
+    right: 18px;
+    bottom: 20px;
+}
+
+.login-param .icon {
+    font-size: 20px;
+    position: relative;
+    bottom: 15px;
+    z-index: 1;
+}
