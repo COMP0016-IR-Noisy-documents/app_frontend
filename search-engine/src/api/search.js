@@ -4,7 +4,7 @@ export default class SearchAPI{
         console.log("fetching search results (APIService)")
         console.log(JSON.stringify(body));
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.REACT_APP_API_URL + '/search', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

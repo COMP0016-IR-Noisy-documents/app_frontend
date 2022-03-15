@@ -25,7 +25,9 @@ function Search() {
     const new_result = result;
     console.log("RES is", new_result);
     setSearchResults(new_result);
-    setSearchID(newSearchID.search_id);
+    if (newSearchID !== null) {
+      setSearchID(newSearchID.search_id);
+    }
     setIsSearch(false);
   };
 

@@ -3,7 +3,7 @@ export default class SearchHistoryAPI{
     static async collectUserSearchHistory(body) {
         // console.log(JSON.stringify(body));
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.REACT_APP_API_URL + '/search-history', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'search-history', {
                 "method": 'POST',
                 "headers": {
                     'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ export default class SearchHistoryAPI{
     static async collectUserClickHistory(body) {
         console.log(JSON.stringify(body));
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.REACT_APP_API_URL + '/click-history', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'click-history', {
                 "method": 'POST',
                 "headers": {
                     'Content-Type': 'application/json'

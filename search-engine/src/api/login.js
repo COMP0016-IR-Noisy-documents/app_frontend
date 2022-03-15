@@ -2,8 +2,9 @@ export default class loginAPI{
 
     static async login(body) {
         console.log(JSON.stringify(body));
+        console.log(window.__RUNTIME_CONFIG__.API_URL);
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.REACT_APP_API_URL + '/login', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

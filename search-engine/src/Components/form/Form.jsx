@@ -42,12 +42,12 @@ const Form = (props) => {
       console.log(result);
       SearchHistoryAPI.collectUserSearchHistory(result)
       .then(searchID => props.fetchedResult(response, searchID))
-      .catch((error) => console.log("error", error));
+      .catch((error) => {console.log("error", error); props.fetchedResult(response, null)});
     } else {
       const result = {...newFilter(props.query, props.filter), ...idJSON};
       SearchHistoryAPI.collectUserSearchHistory(result)
       .then(searchID => props.fetchedResult(response, searchID))
-      .catch((error) => console.log("error", error));
+      .catch((error) => {console.log("error", error); props.fetchedResult(response, null)});
     }
 
 

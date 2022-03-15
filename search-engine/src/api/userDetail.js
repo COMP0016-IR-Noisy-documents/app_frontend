@@ -2,7 +2,7 @@ export default class UserDetailAPI{
 
     static async getCurrentUserDetail(token) {
         try {
-            const response = await fetch((window.__RUNTIME_CONFIG__.REACT_APP_API_URL + '/current-user-detail'), {
+            const response = await fetch((window.__RUNTIME_CONFIG__.API_URL + 'current-user-detail'), {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
