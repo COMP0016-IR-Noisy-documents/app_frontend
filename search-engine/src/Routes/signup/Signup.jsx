@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import RegisterAPI from "../../api/register";
 
@@ -20,6 +21,7 @@ function Signup() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -48,14 +50,7 @@ function Signup() {
   function handleResponse(status) {
     console.log(status);
     if (status === 200) {
-      dispatch(
-        open_alert(
-          true,
-          "Success",
-          "You have been successfully register",
-          "close"
-        )
-      );
+      navigate(`/login`);
     } else if (status === 500) {
       dispatch(
         open_alert(
