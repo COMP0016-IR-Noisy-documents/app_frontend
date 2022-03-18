@@ -61,8 +61,8 @@ const Form = (props) => {
     var filter, result;
 
     filter = {
-      "Type": Type,
-      "Language": Language
+      "type": Type,
+      "language": Language
     }
 
     result = {...{query}, ...{filter}};
