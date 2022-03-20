@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./LoginStatus.css";
-import { log_out, reset_detail, reset_token } from "../../redux/action";
+import { useCookies } from 'react-cookie';
+import { Link, useLocation } from "react-router-dom";
+
+import { log_out, reset_detail } from "../../redux/action";
 
 import { BsFillPersonFill } from "react-icons/bs";
 import { IconContext } from "react-icons/lib";
-import { Link } from "react-router-dom";
+
+import "./LoginStatus.css";
 
 function LoginStatus() {
   const login = useSelector(state => state.LoginReducer );
-  const displayname = useSelector(state => state.UserDetailReducer.username );
+  const displayname = useSelector(state => state.UserDetailReducer.displayname );
   const dispatch = useDispatch();
+  const [cookies, setCookie, removeCookie] = useCookies(['name']);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/login" && cookies.jwtToken === undefined) {
+      dispatch(log_out());
+      dispatch(reset_detail());
+    }
+  });
 
   function loginTrue() {
     return (
@@ -29,7 +41,7 @@ function LoginStatus() {
           onClick={() => {
             dispatch(log_out());
             dispatch(reset_detail());
-            dispatch(reset_token());
+            removeCookie('jwtToken');
           }}
         >
           Disconnect

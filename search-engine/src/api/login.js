@@ -11,9 +11,11 @@ export default class loginAPI{
                 },
                 body: JSON.stringify(body)
             });
-            return await response.json();
+            return await response;
         } catch (error) {
-            return console.log(error);
+            console.log("api error", error);
         }
+
+        
         }
 }

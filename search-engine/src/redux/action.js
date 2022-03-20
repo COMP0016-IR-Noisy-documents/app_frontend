@@ -11,19 +11,6 @@ export const log_out = () => {
     }
 } 
 
-export const mod_token = (new_token) => {
-    return {
-        type: 'MOD_TOKEN',
-        payload: new_token
-    }
-} 
-
-export const reset_token = () => {
-    return {
-        type: 'RESET_TOKEN',
-    }
-} 
-
 export const set_detail = (username, email, displayname, publicid) => {
     return {
         type: 'SET_DETAIL',
