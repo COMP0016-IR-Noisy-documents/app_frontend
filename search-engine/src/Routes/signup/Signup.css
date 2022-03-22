@@ -27,12 +27,21 @@
     justify-content: flex-start;
 }
 
-.term-and-agreement p {
+.term-and-agreement .details {
     position: relative;
     left: 5px;
     bottom: 5px;
 }
 
+.term-and-agreement a{
+    color: #47b0e0 !important;
+}
+
+.checkbox {
+    position: relative;
+    top: 3px;
+}
+ 
 @media (max-width: 750px) {
     #signup {
         width: 350px;

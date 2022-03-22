@@ -1,14 +1,12 @@
+import { useSelector } from "react-redux";
+import * as getType from "../GetType";
 import SearchAPI from "../../api/search";
 import SearchHistoryAPI from "../../api/History";
 
-import { useSelector } from "react-redux";
-
-import "./Form.css";
 import { BiSearch } from "react-icons/bi";
 import { IconContext } from "react-icons/lib";
 
-import * as getType from "../GetType";
-
+import "./Form.css";
 
 const Form = (props) => {
 

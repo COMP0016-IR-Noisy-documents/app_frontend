@@ -1,6 +1,5 @@
 // Display a single, Google-like search result
 import React from "react";
-import "./SearchResult.css";
 
 import { useSelector } from "react-redux";
 
@@ -18,6 +17,7 @@ import { IconContext } from "react-icons";
 
 import { getFileType, getLanguage } from "../GetType";
 
+import "./SearchResult.css";
 
 function getDescription(description) {
   // if the material has no description return an informative message
@@ -92,7 +92,6 @@ function SearchResult(props) {
           <div className="text">{getDescription(props.material.description)}</div>
         </div>
         <h6 className="language-box">{getLanguage(props.material.language)}</h6>
-        <h6 className="published-box">{props.material.id}</h6>
     </div>
   );
 }

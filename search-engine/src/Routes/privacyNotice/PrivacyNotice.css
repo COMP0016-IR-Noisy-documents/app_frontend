@@ -1,0 +1,17 @@
+.privacy-notice {
+    padding: 20px 50px;
+}
+
+.privacy-notice h1, h2 {
+    color: #47b0e0;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.privacy-notice h1 {
+    font-weight: 800;
+}
+
+.privacy-notice p {
+    color: #333;
+}

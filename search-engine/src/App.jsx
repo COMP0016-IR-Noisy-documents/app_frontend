@@ -5,6 +5,7 @@ import Search from "./Routes/search/Search";
 import Test from "./Routes/test/Test";
 import Login from "./Routes/login/Login";
 import Signup from "./Routes/signup/Signup";
+import PrivacyNotice from "./Routes/privacyNotice/PrivacyNotice";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="test" element={<Test />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="privacy-notice" element={<PrivacyNotice />} />
         </Routes>
       </BrowserRouter>
     </div>
