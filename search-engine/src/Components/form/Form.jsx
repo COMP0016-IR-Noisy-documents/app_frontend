@@ -1,20 +1,17 @@
-import SearchAPI from "../../api/search";
-import SearchHistoryAPI from "../../api/History";
-
 import { useSelector } from "react-redux";
+import * as getType from "../GetType";
+import SearchAPI from "../../api/search";
 
-import "./Form.css";
 import { BiSearch } from "react-icons/bi";
 import { IconContext } from "react-icons/lib";
 
-import * as getType from "../GetType";
-
+import "./Form.css";
 
 const Form = (props) => {
 
   const login = useSelector(state => state.LoginReducer );
   const public_id = useSelector(state => state.UserDetailReducer.publicid );
-
+  
   // fetch a result from the SearchAPI
   const fetchResult = () => {
     SearchAPI.fetchResult(newFilter(props.query, props.filter))
@@ -33,22 +30,25 @@ const Form = (props) => {
       "top_document_id": urlArray
     }
 
-
     console.log("login: ", login);
     if (login) {
       console.log(login, "loginT");
-      console.log(public_id, "public id")
-      const result = {...newFilter(props.query, props.filter), ...{"public_id":public_id}, ...idJSON};
-      console.log(result);
-      SearchHistoryAPI.collectUserSearchHistory(result)
-      .then(searchID => props.fetchedResult(response, searchID))
-      .catch((error) => {console.log("error", error); props.fetchedResult(response, null)});
+      console.log(public_id, "public id");
+      var result = {...newFilter(props.query, props.filter), ...{"public_id":public_id}, ...idJSON};
+      sessionStorage.setItem("search_result", JSON.stringify(result));
+
     } else {
-      const result = {...newFilter(props.query, props.filter), ...idJSON};
-      SearchHistoryAPI.collectUserSearchHistory(result)
-      .then(searchID => props.fetchedResult(response, searchID))
-      .catch((error) => {console.log("error", error); props.fetchedResult(response, null)});
+      var result = {...newFilter(props.query, props.filter), ...idJSON};
+      sessionStorage.setItem("search_result", JSON.stringify(result));
     }
+
+    console.log(result, "result");
+    console.log("response", (response));
+    props.fetchedResult(response);
+
+    // SearchHistoryAPI.collectUserSearchHistory(result)
+    //   .then(searchID => props.fetchedResult(response, searchID))
+    //   .catch((error) => {console.log("error", error); props.fetchedResult(response, null)});
 
 
   }

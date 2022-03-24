@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link  } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import RegisterAPI from "../../api/register";
 
-import { BiLockOpenAlt } from "react-icons/bi";
-import { BiUser } from "react-icons/bi";
+import { open_alert } from "../../redux/action";
+import RegisterAPI from "../../api/register";
 
 import Head from "../../Components/head/Head";
 import LoginParam from "../../Components/loginParam/LoginParam";
 import Button from "../../Components/button/Button";
 import Alert from "../../Components/alert/alert";
 
+import { BiLockOpenAlt } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
+
 import "./Signup.css";
-import { open_alert } from "../../redux/action";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -61,10 +62,10 @@ function Signup() {
         )
       );
     } else {
-        console.log([ true,
-            "Error",
-            "The username or email has been taken",
-            "close"]);
+      console.log([true,
+        "Error",
+        "The username or email has been taken",
+        "close"]);
       dispatch(
         open_alert(
           true,
@@ -139,9 +140,7 @@ function Signup() {
         />
 
         <div className="term-and-agreement">
-          <p>By clicking on signup button</p>
-          <p>I agree to the platform Terms of Service</p>
-          <p>I agree to the platform Privacy Notice</p>
+          <div> <input type="checkbox" required /> I agree to the platform <Link target={"_blank"} to={`/privacy-notice`}>Privacy Notice</Link> </div>
         </div>
 
         <Button name="signup" />

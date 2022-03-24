@@ -1,5 +1,7 @@
-import React, { useState /*, useEffect*/ } from "react";
+import React, { useState , useEffect } from "react";
 import "./Search.css";
+
+import SearchHistoryAPI from "../../api/History";
 
 // import SimpleResult from './Components/SimpleResult'
 import ResultList from "../../Components/ResultList";
@@ -20,14 +22,24 @@ function Search() {
     Type: []
   });
 
+  useEffect(() => {
+
+  let res = JSON.parse(sessionStorage.getItem('search_result')); 
+  console.log("res is", res); 
+    
+  if (res !== null) {
+    SearchHistoryAPI.collectUserSearchHistory(res)
+    .then(newSearchID => setSearchID(newSearchID.search_id))
+    .catch((error) => {console.log("error", error)});
+    sessionStorage.clear();
+    }
+  })
+
   // this function allows Form to propagate the search result back to App
-  const fetchedResult = (result, newSearchID) => {
+  const fetchedResult = async (result) => {
     const new_result = result;
     console.log("RES is", new_result);
     setSearchResults(new_result);
-    if (newSearchID !== null) {
-      setSearchID(newSearchID.search_id);
-    }
     setIsSearch(false);
   };
 
