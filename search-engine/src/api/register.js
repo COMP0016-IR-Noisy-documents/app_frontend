@@ -4,7 +4,7 @@ export default class RegisterAPI{
         console.log("registering a new user (APIService)")
         console.log(JSON.stringify(body));
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'register', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + '/register', {
                 "method": 'POST',
                 "headers": {
                     'Content-Type': 'application/json'
