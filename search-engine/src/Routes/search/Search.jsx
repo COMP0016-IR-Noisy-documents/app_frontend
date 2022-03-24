@@ -29,7 +29,7 @@ function Search() {
     
   if (res !== null) {
     SearchHistoryAPI.collectUserSearchHistory(res)
-    .then(newSearchID => console.log(newSearchID))
+    .then(newSearchID => setSearchID(newSearchID.search_id))
     .catch((error) => {console.log("error", error)});
     sessionStorage.clear();
     }
