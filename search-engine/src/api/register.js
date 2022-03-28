@@ -11,7 +11,7 @@ export default class RegisterAPI{
                 },
                 "body": JSON.stringify(body)
             });
-            return response.status;
+            return response;
         } catch (error) {
             return console.log(error);
         }

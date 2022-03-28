@@ -1,21 +1,19 @@
 import Head from "../../Components/head/Head";
-import Alert from "../../Components/alert/alert";
+import Load from "../../Components/load/Load";
 
-import { useCookies } from 'react-cookie';
-
+import { useSelector, useDispatch } from "react-redux";
+import { load } from "../../redux/action";
 
 function Test() {
-    const [cookies, setCookie] = useCookies(['name']);
-  
-    setCookie("abc", 6555);
-    setCookie("def", 6555);
+    const buttonContent = useSelector(state => state.AlertReducer.buttonContent );
+    const dispatch = useDispatch();
+
+    dispatch(load());
   
     return (
         <div>
             <Head isSearch={true} />
-            <Alert isOpen={true} header='error' content='wrong password' buttonContent='close'/>
-            <p>{cookies.abc}</p>
-            <p>{cookies.def}</p>
+            <Load />
         </div>
     )
 }

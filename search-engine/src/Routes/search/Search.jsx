@@ -1,7 +1,8 @@
-import React, { useState , useEffect } from "react";
-import "./Search.css";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import SearchHistoryAPI from "../../api/History";
+import { unload } from "../../redux/action";
 
 // import SimpleResult from './Components/SimpleResult'
 import ResultList from "../../Components/ResultList";
@@ -9,6 +10,8 @@ import Form from "../../Components/form/Form";
 import X5GON from "../../Components/x5Icon/X5GON";
 import Filter from "../../Components/filter/Filter";
 import Head from "../../Components/head/Head";
+
+import "./Search.css";
 
 function Search() {
   // declare new state variable and initialise it with empty array to store search results
@@ -21,17 +24,19 @@ function Search() {
     Language: [],
     Type: []
   });
+  const dispatch = useDispatch();
 
   useEffect(() => {
 
-  let res = JSON.parse(sessionStorage.getItem('search_result')); 
-  console.log("res is", res); 
-    
-  if (res !== null) {
-    SearchHistoryAPI.collectUserSearchHistory(res)
-    .then(newSearchID => setSearchID(newSearchID.search_id))
-    .catch((error) => {console.log("error", error)});
-    sessionStorage.clear();
+    let res = JSON.parse(sessionStorage.getItem('search_result'));
+    console.log("res is", res);
+
+    if (res !== null) {
+      SearchHistoryAPI.collectUserSearchHistory(res)
+        .then(newSearchID => setSearchID(newSearchID.search_id))
+        .catch((error) => { console.log("error", error) });
+      sessionStorage.clear();
+      dispatch(unload());
     }
   })
 
@@ -68,11 +73,11 @@ function Search() {
 
   //setFilter subfunction
   function modifyStatus(prevStatus, currentStatus) {
-      if (prevStatus.includes(currentStatus)) {
-        return prevStatus.filter(value => (value !== currentStatus));
-      } else {
-        return [...prevStatus, currentStatus];
-      }
+    if (prevStatus.includes(currentStatus)) {
+      return prevStatus.filter(value => (value !== currentStatus));
+    } else {
+      return [...prevStatus, currentStatus];
+    }
   }
 
   function modifyQuery(newQuery) {
@@ -81,33 +86,34 @@ function Search() {
 
   return (
     <div className="search">
-      <Head fetchedResult={fetchedResult}
-            setAppQuery={setAppQuery}
-            filter={currentFilters}
-            query={currentQuery}
-            modifyQuery={modifyQuery}
-            searchQuery={searchQuery}
-            isSearch={isSearch}/>
-      
+        <Head fetchedResult={fetchedResult}
+          setAppQuery={setAppQuery}
+          filter={currentFilters}
+          query={currentQuery}
+          modifyQuery={modifyQuery}
+          searchQuery={searchQuery}
+          isSearch={isSearch} />
+
         {/* only display the X5GON logo on the start page */}
         {isSearch ? <div id="X5"><X5GON /></div> : null}
-      
 
-      <div className="container">
-        <div className="row ">
-          <div className="text-center"></div>
-        </div>
-        {isSearch ? (<Form fetchedResult={fetchedResult} setAppQuery={setAppQuery} filter={currentFilters} query={currentQuery}
-            modifyQuery={modifyQuery} isSearch={isSearch}/>) : null}
-        {/* Display search results only after search was performed (will otherwise show "no results found" message) */}
-        {isSearch ? null : (
-          <div className="result">
-            <div><Filter setFilter={setFilter} currentFilters={currentFilters}/></div>
-            <div><ResultList results={searchResults.result} searchID={searchID}/></div>            
+
+        <div className="container">
+          <div className="row ">
+            <div className="text-center"></div>
           </div>
-        )}
+          {isSearch ? (<Form fetchedResult={fetchedResult} setAppQuery={setAppQuery} filter={currentFilters} query={currentQuery}
+            modifyQuery={modifyQuery} isSearch={isSearch} />) : null}
+          {/* Display search results only after search was performed (will otherwise show "no results found" message) */}
+          {isSearch ? null : (
+            <div className="result">
+              <div><Filter setFilter={setFilter} currentFilters={currentFilters} /></div>
+              <div><ResultList results={searchResults.result} searchID={searchID} /></div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
   );
 }
 

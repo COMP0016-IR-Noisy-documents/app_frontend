@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { log_in, open_alert, set_detail } from "../../redux/action";
+import { log_in, open_alert, set_detail, load, unload } from "../../redux/action";
 
 import loginAPI from "../../api/login";
 import UserDetailAPI from "../../api/userDetail";
@@ -11,6 +11,7 @@ import Head from "../../Components/head/Head";
 import LoginParam from "../../Components/loginParam/LoginParam";
 import Button from "../../Components/button/Button";
 import Alert from "../../Components/alert/alert";
+import Load from "../../Components/load/Load";
 
 import { BiLockOpenAlt } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
@@ -36,6 +37,7 @@ function Login() {
   });
 
   async function handleSubmit(event) {
+    dispatch(load());
     event.preventDefault();
     try {
       const response = await loginAPI.login({ username: userName, password: password });
@@ -48,15 +50,16 @@ function Login() {
             "Wrong username or password.",
             "close"
           )
-      );
+        );
       } else {
         const json = await response.json();
         console.log(json.token);
         migrateValue(json.token);
       }
+      dispatch(unload());
     } catch (error) {
       console.log("error", error);
-
+      dispatch(unload());
     }
   }
 
@@ -92,6 +95,7 @@ function Login() {
   return (
     (
       <div>
+        <Load />
         <Alert />
 
         <Head isSearch={true} />
