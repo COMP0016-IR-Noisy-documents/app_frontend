@@ -33,19 +33,19 @@ function SearchResult(props) {
   const login = useSelector(state => state.LoginReducer );
   const public_id = useSelector(state => state.UserDetailReducer.publicid );    
 
-    function collectClickHistory(id) {
+    async function collectClickHistory(id) {
+      let result = {};
       if (login) {
-        const result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}, ...{"public_id": public_id}};
-        SearchHistoryAPI.collectUserClickHistory(result)
-       .then(response => console.log(response))
-       .catch((error) => console.log("error", error));
+        result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}, ...{"public_id": public_id}};
       } else {
-        const result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}};
-        SearchHistoryAPI.collectUserClickHistory(result)
-       .then(response => console.log(response))
-       .catch((error) => console.log("error", error));
+        result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}};
       }
-      
+      try {
+        const response = await SearchHistoryAPI.collectUserClickHistory(result);
+        console.log(response);
+      } catch (error) {
+        console.log("error", error);
+      }     
     }
 
   return (

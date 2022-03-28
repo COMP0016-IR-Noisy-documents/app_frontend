@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate, Link  } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { open_alert } from "../../redux/action";
+import { open_alert, load, unload } from "../../redux/action";
 import RegisterAPI from "../../api/register";
 
 import Head from "../../Components/head/Head";
 import LoginParam from "../../Components/loginParam/LoginParam";
 import Button from "../../Components/button/Button";
 import Alert from "../../Components/alert/alert";
+import Load from "../../Components/load/Load";
 
 import { BiLockOpenAlt } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
@@ -24,18 +25,23 @@ function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+    dispatch(load());
     event.preventDefault();
     console.log(password, confirmPassword);
     if (confirmPassword === password) {
-      RegisterAPI.register({
-        username: userName,
-        password: password,
-        email: email,
-        displayname: displayName,
-      })
-        .then((status) => handleResponse(status))
-        .catch((error) => console.log("error", error));
+      try {
+        const response = await RegisterAPI.register({
+          username: userName,
+          password: password,
+          email: email,
+          displayname: displayName,
+        });
+        handleResponse(response.status)
+
+      } catch (error) {
+        console.log("error", error);
+      }
     } else {
       dispatch(
         open_alert(
@@ -46,6 +52,7 @@ function Signup() {
         )
       );
     }
+    dispatch(unload());
   }
 
   function handleResponse(status) {
@@ -94,6 +101,7 @@ function Signup() {
   return (
     <div>
       <Alert />
+      <Load />
       <Head isSearch={true} />
 
       <form id="signup" onSubmit={handleSubmit}>
