@@ -81,7 +81,7 @@ function SearchResult(props) {
         </div>
         {/* Display title */}
         <h2 className="title-box">
-          <a href={props.material.url} onClick={() => collectClickHistory(props.material.id)}>{props.material.title}</a>
+          <a href={props.material.url} onClick={() => collectClickHistory(props.material.id)} target="_blank">{props.material.title}</a>
         </h2>
         {/* Display keywords */}
         <div className="description-box" >
