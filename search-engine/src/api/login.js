@@ -4,16 +4,18 @@ export default class loginAPI{
         console.log(JSON.stringify(body));
         console.log(window.__RUNTIME_CONFIG__.API_URL);
         try {
-            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + 'login', {
+            const response = await fetch(window.__RUNTIME_CONFIG__.API_URL + '/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(body)
             });
-            return await response.json();
+            return await response;
         } catch (error) {
-            return console.log(error);
+            console.log("api error", error);
         }
+
+        
         }
 }

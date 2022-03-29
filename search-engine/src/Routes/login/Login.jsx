@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import loginAPI from "../../api/login";
-import UserDetailAPI from "../../api/userDetail";
+import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { log_in, mod_token, open_alert, set_detail } from "../../redux/action";
-import { BiLockOpenAlt } from "react-icons/bi";
-import { BiUser } from "react-icons/bi";
 
+import { log_in, open_alert, set_detail, load, unload } from "../../redux/action";
+
+import loginAPI from "../../api/login";
+import UserDetailAPI from "../../api/userDetail";
 import Head from "../../Components/head/Head";
 import LoginParam from "../../Components/loginParam/LoginParam";
 import Button from "../../Components/button/Button";
 import Alert from "../../Components/alert/alert";
+import Load from "../../Components/load/Load";
+
+import { BiLockOpenAlt } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 
 import "./Login.css";
 
@@ -18,6 +22,7 @@ function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
+  const [cookies, setCookie] = useCookies(['name']);
 
   const isLogin = useSelector(state => state.LoginReducer);
   const dispatch = useDispatch();
@@ -31,31 +36,53 @@ function Login() {
     }
   });
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+    dispatch(load());
     event.preventDefault();
-    loginAPI
-      .login({ username: userName, password: password })
-      .then((response) => migrateValue(response.token))
-      .catch((error) => console.log("error", error));
+    try {
+      const response = await loginAPI.login({ username: userName, password: password });
+      console.log(response);
+      if (response.status !== 200) {
+        dispatch(
+          open_alert(
+            true,
+            "Error",
+            "Wrong username or password.",
+            "close"
+          )
+        );
+      } else {
+        const json = await response.json();
+        console.log(json.token);
+        migrateValue(json.token);
+      }
+      dispatch(unload());
+    } catch (error) {
+      console.log("error", error);
+      dispatch(unload());
+    }
   }
 
-  function migrateValue(token) {
-    dispatch(mod_token(token));
-    UserDetailAPI.getCurrentUserDetail(token)
-      .then((response) => {
+  async function migrateValue(token) {
+
+    //store token in cookie 
+    setCookie("jwtToken", token, {maxAge: 10500 });
+    try {
+      const response = await UserDetailAPI.getCurrentUserDetail(token);
+      console.log(response);
+      if (response.status === 200) {
+        const resJson = await response.json()
         dispatch(
-          set_detail(response.username, response.email, response.displayname, response.public_id)
+          set_detail(resJson.username, resJson.email, resJson.displayname, resJson.public_id)
         );
         dispatch(log_in());
-      }
-      )
-      .catch((error) => console.log("error", error));
+      }  
+    } catch (error) {
+      console.log("error", error);
 
-    // dispatch(open_alert(true,
-    //   "Logged in",
-    //   "User has been sucessfully logged in to the system",
-    //   "close"));
+    }
   }
+
 
   function modifyValue(name, value) {
     if (name === "Username") {
@@ -68,8 +95,9 @@ function Login() {
   return (
     (
       <div>
+        <Load />
         <Alert />
-  
+
         <Head isSearch={true} />
   
         <form id="login" onSubmit={handleSubmit}>

@@ -1,8 +1,10 @@
 import React from "react";
-import "./alert.css";
 import { useSelector, useDispatch } from "react-redux";
 import { close_alert } from "../../redux/action";
+
 import Button from "../button/Button";
+
+import "./alert.css";
 
 function Alert() {
   const isOpen = useSelector(state => state.AlertReducer.isOpen );

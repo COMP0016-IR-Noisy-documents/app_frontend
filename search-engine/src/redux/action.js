@@ -11,19 +11,6 @@ export const log_out = () => {
     }
 } 
 
-export const mod_token = (new_token) => {
-    return {
-        type: 'MOD_TOKEN',
-        payload: new_token
-    }
-} 
-
-export const reset_token = () => {
-    return {
-        type: 'RESET_TOKEN',
-    }
-} 
-
 export const set_detail = (username, email, displayname, publicid) => {
     return {
         type: 'SET_DETAIL',
@@ -51,5 +38,17 @@ export const open_alert = (isOpen, header, content, buttonContent) => {
 export const close_alert = () => {
     return {
         type: 'CLOSE_ALERT'
+    }
+} 
+
+export const load = () => {
+    return {
+        type: 'LOAD',
+    }
+} 
+
+export const unload = () => {
+    return {
+        type: 'UNLOAD'
     }
 } 

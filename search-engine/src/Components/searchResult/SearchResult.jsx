@@ -1,6 +1,5 @@
 // Display a single, Google-like search result
 import React from "react";
-import "./SearchResult.css";
 
 import { useSelector } from "react-redux";
 
@@ -18,6 +17,7 @@ import { IconContext } from "react-icons";
 
 import { getFileType, getLanguage } from "../GetType";
 
+import "./SearchResult.css";
 
 function getDescription(description) {
   // if the material has no description return an informative message
@@ -33,19 +33,19 @@ function SearchResult(props) {
   const login = useSelector(state => state.LoginReducer );
   const public_id = useSelector(state => state.UserDetailReducer.publicid );    
 
-    function collectClickHistory(id) {
+    async function collectClickHistory(id) {
+      let result = {};
       if (login) {
-        const result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}, ...{"public_id": public_id}};
-        SearchHistoryAPI.collectUserClickHistory(result)
-       .then(response => console.log(response))
-       .catch((error) => console.log("error", error));
+        result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}, ...{"public_id": public_id}};
       } else {
-        const result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}};
-        SearchHistoryAPI.collectUserClickHistory(result)
-       .then(response => console.log(response))
-       .catch((error) => console.log("error", error));
+        result = {...{"document_id": id}, ...{"document_pos": props.index}, ...{"search_id": props.searchID}};
       }
-      
+      try {
+        const response = await SearchHistoryAPI.collectUserClickHistory(result);
+        console.log(response);
+      } catch (error) {
+        console.log("error", error);
+      }     
     }
 
   return (
@@ -81,7 +81,7 @@ function SearchResult(props) {
         </div>
         {/* Display title */}
         <h2 className="title-box">
-          <a href={props.material.url} onClick={() => collectClickHistory(props.material.id)}>{props.material.title}</a>
+          <a href={props.material.url} onClick={() => collectClickHistory(props.material.id)} target="_blank">{props.material.title}</a>
         </h2>
         {/* Display keywords */}
         <div className="description-box" >
@@ -92,7 +92,6 @@ function SearchResult(props) {
           <div className="text">{getDescription(props.material.description)}</div>
         </div>
         <h6 className="language-box">{getLanguage(props.material.language)}</h6>
-        <h6 className="published-box">{props.material.id}</h6>
     </div>
   );
 }
