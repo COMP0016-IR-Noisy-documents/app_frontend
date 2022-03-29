@@ -25,6 +25,7 @@ function getFileType(type) {
         case "odt":
         case "rtf":
         case "txt":
+        case "pdf":   
         default:
             return "document";
     }
@@ -45,7 +46,7 @@ function inverseFileType(type) {
             return ["xml", "html"];
         case "document":
         default:
-            return ["docx", "odt", "rtf", "txt"];
+            return ["docx", "odt", "rtf", "txt", "pdf"];
     }
 }
 
