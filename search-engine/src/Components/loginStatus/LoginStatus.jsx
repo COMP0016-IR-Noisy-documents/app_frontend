@@ -10,6 +10,9 @@ import { IconContext } from "react-icons/lib";
 
 import "./LoginStatus.css";
 
+// By Thatchawin Leelawat
+
+
 function LoginStatus() {
   const login = useSelector(state => state.LoginReducer );
   const displayname = useSelector(state => state.UserDetailReducer.displayname );

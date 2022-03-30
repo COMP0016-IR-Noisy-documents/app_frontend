@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import "./FilterElement.css";
 
+// By Tim Widmayer, Thatchawin Leelawat
+
 function FilterElement(props) {
   const [click, setClick] = useState("+");
 

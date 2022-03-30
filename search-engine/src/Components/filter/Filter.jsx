@@ -4,6 +4,8 @@ import FilterElement from "../filterElement/FilterElement";
 
 import "./Filter.css";
 
+// By Thatchawin Leelawat
+
 function Filter(props) {
   const language = [
     {

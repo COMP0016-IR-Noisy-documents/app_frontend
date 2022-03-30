@@ -6,6 +6,9 @@ import Button from "../button/Button";
 
 import "./alert.css";
 
+// By Thatchawin Leelawat
+
+
 function Alert() {
   const isOpen = useSelector(state => state.AlertReducer.isOpen );
   const header = useSelector(state => state.AlertReducer.header );

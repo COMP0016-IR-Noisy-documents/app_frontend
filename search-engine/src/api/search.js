@@ -1,4 +1,6 @@
-export default class SearchAPI{
+// By Tim Widmayer
+
+export default class SearchAPI {
     // fetch search results from the backend
     static async fetchResult(body) {
         console.log("fetching search results (APIService)")
@@ -16,7 +18,5 @@ export default class SearchAPI{
         } catch (error) {
             return console.log(error);
         }
-        }
+    }
 }
-
-

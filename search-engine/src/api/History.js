@@ -1,4 +1,6 @@
-export default class SearchHistoryAPI{
+// By Thatchawin Leelawat
+
+export default class SearchHistoryAPI {
     // fetch search results from the backend
     static async collectUserSearchHistory(body) {
         // console.log(JSON.stringify(body));

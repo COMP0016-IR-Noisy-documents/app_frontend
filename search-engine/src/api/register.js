@@ -1,4 +1,6 @@
-export default class RegisterAPI{
+// By Thatchawin Leelawat
+
+export default class RegisterAPI {
     // fetch search results from the backend
     static async register(body) {
         console.log("registering a new user (APIService)")
@@ -15,5 +17,5 @@ export default class RegisterAPI{
         } catch (error) {
             return console.log(error);
         }
-        }
+    }
 }

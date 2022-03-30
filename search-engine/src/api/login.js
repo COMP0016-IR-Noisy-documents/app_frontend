@@ -1,4 +1,6 @@
-export default class loginAPI{
+// By Thatchawin Leelawat
+
+export default class loginAPI {
 
     static async login(body) {
         console.log(JSON.stringify(body));
@@ -16,6 +18,6 @@ export default class loginAPI{
             console.log("api error", error);
         }
 
-        
-        }
+
+    }
 }

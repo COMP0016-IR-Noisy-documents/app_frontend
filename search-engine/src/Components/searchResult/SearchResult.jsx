@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 
 import SearchHistoryAPI from "../../api/History";
 
+// By Tim Widmayer
+
+
 import {
   BsFileEarmarkText,
   BsFileEarmarkSlides,

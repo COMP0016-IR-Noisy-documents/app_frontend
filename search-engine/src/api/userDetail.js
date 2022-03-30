@@ -1,4 +1,6 @@
-export default class UserDetailAPI{
+// By Thatchawin Leelawat
+
+export default class UserDetailAPI {
 
     static async getCurrentUserDetail(token) {
         const response = await fetch((window.__RUNTIME_CONFIG__.API_URL + '/current-user-detail'), {
@@ -9,5 +11,5 @@ export default class UserDetailAPI{
             }
         });
         return await response;
-        }
+    }
 }

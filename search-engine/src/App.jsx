@@ -9,6 +9,9 @@ import PrivacyNotice from "./Routes/privacyNotice/PrivacyNotice";
 
 import "./App.css";
 
+// By Tim Widmayer, Thatchawin Leelawat
+
+
 function App() {
 
   return (

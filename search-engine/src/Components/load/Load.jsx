@@ -4,6 +4,9 @@ import { motion } from "framer-motion/dist/es/index";
 
 import "./Load.css";
 
+// By Thatchawin Leelawat
+
+
 const motionContainer = {
   width: "128px",
   height: "64px",
