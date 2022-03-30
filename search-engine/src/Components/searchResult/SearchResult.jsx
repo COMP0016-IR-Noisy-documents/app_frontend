@@ -60,17 +60,17 @@ function SearchResult(props) {
               {(() => {
                 // use the language property since type and language are mixed up in X5GON database
                 switch (getFileType(props.material.type)) {
-                  case "document":
+                  case "Document":
                     return <BsFileEarmarkText />;
-                  case "video":
+                  case "Video":
                     return <BsFileEarmarkPlay />;
-                  case "spreadsheet":
+                  case "Spreadsheet":
                     return <BsFileEarmarkSpreadsheet />;
-                  case "code":
+                  case "Code":
                     return <BsFileEarmarkCode />;
-                  case "audio":
+                  case "Audio":
                     return <BsFileEarmarkMusic />;
-                  case "presentation":
+                  case "Presentation":
                     return <BsFileEarmarkSlides />;
                   default:
                     return null;

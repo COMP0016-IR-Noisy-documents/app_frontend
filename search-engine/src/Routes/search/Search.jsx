@@ -10,6 +10,7 @@ import Form from "../../Components/form/Form";
 import X5GON from "../../Components/x5Icon/X5GON";
 import Filter from "../../Components/filter/Filter";
 import Head from "../../Components/head/Head";
+import Alert from "../../Components/alert/alert";
 
 import "./Search.css";
 
@@ -85,7 +86,10 @@ function Search() {
   }
 
   return (
-    <div className="search">
+    <div>
+      <Alert />
+
+      <div className="search">
         <Head fetchedResult={fetchedResult}
           setAppQuery={setAppQuery}
           filter={currentFilters}
@@ -113,6 +117,8 @@ function Search() {
           )}
         </div>
       </div>
+    </div>
+    
 
   );
 }

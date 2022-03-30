@@ -9,44 +9,45 @@ function getFileType(type) {
         case "mpg":
         case "mpeg":
         case "divx":
-            return "video";
+            return "Video";
         case "ods":
         case "xls":
         case "xlsx":
-            return "spreadsheet";
+            return "Spreadsheet";
         case "mp3":
-            return "audio"
+            return "Audio"
         case "pptx":
-            return "presentation";
+            return "Presentation";
         case "xml":
         case "html":
-            return "code";
+            return "Code";
         case "docx":
         case "odt":
         case "rtf":
         case "txt":
         case "pdf":   
         default:
-            return "document";
+            return "Document";
     }
 }
 
 //frontend type to backend code type
 function inverseFileType(type) {
     switch (type) {
-        case "video":
+        case "Video":
             return ["rm", "mp4", "mv4", "mov", "avi", "mpg", "mpeg", "divx"];
-        case "spreadsheet":
+        case "Spreadsheet":
             return ["ods", "xls", "xlsx"];
-        case "audio":
+        case "Audio":
             return ["mp3"];
-        case "presentation":
+        case "Presentation":
             return ["pptx"];
-        case "code":
+        case "Code":
             return ["xml", "html"];
-        case "document":
-        default:
+        case "Document":
             return ["docx", "odt", "rtf", "txt", "pdf"];
+        default:
+            return []
     }
 }
 

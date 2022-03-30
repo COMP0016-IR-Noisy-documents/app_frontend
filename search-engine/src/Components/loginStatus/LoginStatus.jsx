@@ -44,7 +44,7 @@ function LoginStatus() {
             removeCookie('jwtToken');
           }}
         >
-          Disconnect
+          Logout
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as getType from "../GetType";
 import SearchAPI from "../../api/search";
-import { load, unload } from "../../redux/action";
+import { load, open_alert, unload } from "../../redux/action";
 
 import Load from "../../Components/load/Load";
 
@@ -24,6 +24,7 @@ const Form = (props) => {
       fetchAction(response);
     } catch (error) {
       console.log("error", error);
+      dispatch(open_alert(true, "Error", "Error: " + error + ", please try again later", "close"));
       dispatch(unload());
     }
   };
